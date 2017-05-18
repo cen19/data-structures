@@ -20,6 +20,7 @@ Queue.prototype.dequeue = function() {
   this.queueSize--;
   this.firtPlace++;
   return this.storage[this.firtPlace];
+
 };
 
 Queue.prototype.size = function() {

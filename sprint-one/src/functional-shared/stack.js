@@ -7,7 +7,6 @@ var Stack = function() {
   extend(newStack, stackMethods);
   
   return newStack;
-  
 };
 
 var extend = function(to, from) {

@@ -3,11 +3,13 @@ var LinkedList = function() {
   list.head = null;
   list.tail = null;
   list.previousNode = null;
+  list.allNodes = {};
   
   list.addToTail = function(value) {
     if (list.head === null) {
       list.head = Node(value);
       list.tail = list.head;
+      list.allNodes = 
     } else {
       list.tail = Node(value);
       list.previousNode = list.tail;
@@ -26,11 +28,13 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
-    // start from head
-      // look up value
-        // if it exists
-        // return boolean === true;
-          // if it reaches end without matches, return false
+    var exists = false;
+    for (var key in list.allNodes) {
+      if (list.allNodes[key] === target) {
+        exists = true;
+      }
+    }
+    return exists;
   };
 
   return list;

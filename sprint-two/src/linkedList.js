@@ -16,24 +16,29 @@ var LinkedList = function() {
       }
       list.tail = nextNode;
     }
+   
   };
 
   list.removeHead = function() {
     var headValue = list.head.value;
     list.head = list.head.next;
     return headValue;
-  };
+  };   
 
   list.contains = function(target) {
-    if (list.head.value === target) {
-      return true;
-    }
-    while (list.head.next) {
-      if (list.head.value === target) {
-        return true;
+    var starter = list.head;
+    var exists = false;
+
+    while (starter) {
+      if (starter.value === target) {
+        exists = true;
+        break;
+      } else {
+        starter = starter.next;
       }
     }
-    return false;
+
+    return exists;
   };
 
   return list;

@@ -2,31 +2,27 @@ var LinkedList = function() {
   var list = {};
   list.head = null;
   list.tail = null;
-
+  list.previousNode = null;
+  
   list.addToTail = function(value) {
-    if (list.head === null && list.tail === null) {
-      var beginningNode = Node(value);
-      list.head = beginningNode;
-      list.tail = beginningNode;
+    if (list.head === null) {
+      list.head = Node(value);
+      list.tail = list.head;
+    } else {
+      list.tail = Node(value);
+      list.previousNode = list.tail;
+      if (list.head.next === null) {
+        list.head.next = list.previousNode;
+      } else {
+        list.previousNode.next = list.tail;
+      }
     }
-    var newNode = Node(value);
-    
-    // if (list.head.next === null) {
-    //   list.head.next = newNode;
-    // }
-
-    list.tail = newNode;
-    
-    // #1 situation : list is empty
-      // we need to have one 'node' which can be considered both head and tail
-    // #2 situation : we have one 'node' so far
   };
 
   list.removeHead = function() {
-    // var finalVal = list.head.value;
-    // new head designated below
+    var headValue = list.head.value;
     list.head = list.head.next;
-    return list.head.value;
+    return headValue;
   };
 
   list.contains = function(target) {

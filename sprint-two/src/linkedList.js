@@ -2,22 +2,19 @@ var LinkedList = function() {
   var list = {};
   list.head = null;
   list.tail = null;
-  list.previousNode = null;
-  list.allNodes = {};
-  
+
   list.addToTail = function(value) {
     if (list.head === null) {
       list.head = Node(value);
       list.tail = list.head;
-      list.allNodes = 
     } else {
-      list.tail = Node(value);
-      list.previousNode = list.tail;
+      var nextNode = Node(value);
       if (list.head.next === null) {
-        list.head.next = list.previousNode;
+        list.head.next = nextNode;
       } else {
-        list.previousNode.next = list.tail;
+        list.tail.next = nextNode;
       }
+      list.tail = nextNode;
     }
   };
 
@@ -28,13 +25,15 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
-    var exists = false;
-    for (var key in list.allNodes) {
-      if (list.allNodes[key] === target) {
-        exists = true;
+    if (list.head.value === target) {
+      return true;
+    }
+    while (list.head.next) {
+      if (list.head.value === target) {
+        return true;
       }
     }
-    return exists;
+    return false;
   };
 
   return list;
@@ -52,4 +51,3 @@ var Node = function(value) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
- 

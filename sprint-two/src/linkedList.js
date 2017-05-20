@@ -16,14 +16,14 @@ var LinkedList = function() {
       }
       list.tail = nextNode;
     }
-   
+
   };
 
   list.removeHead = function() {
     var headValue = list.head.value;
     list.head = list.head.next;
     return headValue;
-  };   
+  };
 
   list.contains = function(target) {
     var starter = list.head;
@@ -55,4 +55,6 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+
+ The time complexity in this case is a linear because it has to visit each node once and as you traverse the nodes. If the thing you're searching for is found on the first node, it's faster than having to check all the way to the end.
  */

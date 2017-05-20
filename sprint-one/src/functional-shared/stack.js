@@ -5,7 +5,7 @@ var Stack = function() {
   newStack.storage = {};
   newStack.count = 0;
   extend(newStack, stackMethods);
-  
+
   return newStack;
 };
 

@@ -1,7 +1,9 @@
 var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
-  newTree.children = [];  // fix me
+  newTree.children = []; 
+  
+  
   _.extend(newTree, treeMethods);
 
   return newTree;
@@ -14,12 +16,19 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-  if (this.value === target) { // target the value prop inside the first tree
-    return true;
-  }
-  // console.log(this);
-  // console.log(this.value);
+  var exists = false;
+  var childrenChecker = function (array, target) {
 
+    for (var i = 0; i < array.length; i++) {
+      if (array[i].value === target) {
+        exists = true; // if true, return boolean
+      }
+      childrenChecker(array[i].children, target);
+    }
+    return exists;
+  };
+  
+  return childrenChecker(this.children, target);
 };
 
 

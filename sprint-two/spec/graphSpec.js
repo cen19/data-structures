@@ -2,6 +2,7 @@ describe('graph', function() {
   var graph;
 
   beforeEach(function() {
+    // creates the initial instance
     graph = new Graph();
   });
 

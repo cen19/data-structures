@@ -5,21 +5,29 @@ var Graph = function() {
 
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
-  this.storage[node] = {node: node};
-  // add edges property as object when invoking addEdges
+  // goes into storage and sets property to [node]
+    // 'value' is an object-literal with prop has [node]: node
+  this.storage[node] = {[node]: node};
 };
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
-  return this.storage[node].node === node;
+  // mental map 
+  // storage: {
+  //   [node]: {
+  //     [node]: node;
+  //   }
+  // }
+  return this.storage[node][node] === node;
 };
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
-  if (this.storage[node].node === node) {
-    delete this.storage[node].node;
+  if (this.storage[node][node] === node) {
+    // if (this.storage[node][node])
+    delete this.storage[node][node];
   }
-  if ()
+
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.

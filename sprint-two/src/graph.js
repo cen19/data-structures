@@ -19,6 +19,7 @@ Graph.prototype.removeNode = function(node) {
   if (this.storage[node].node === node) {
     delete this.storage[node].node;
   }
+  if ()
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
@@ -42,7 +43,11 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
-  
+  // determine if there is an edge between them at all
+  if ((this.storage[fromNode][toNode] === toNode) && (this.storage[toNode][fromNode] === fromNode)) {
+    delete this.storage[fromNode][toNode];
+    delete this.storage[toNode][fromNode];
+  }
 };
 
 // Pass in a callback which will be executed on each node of the graph.

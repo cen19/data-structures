@@ -37,10 +37,9 @@ var LinkedList = function() {
         starter = starter.next;
       }
     }
-
     return exists;
   };
-
+  
   return list;
 };
 
